@@ -3,7 +3,7 @@ const BankAccount = require('../bankAccount')
 describe('BankAccount', () => {
   describe('deposit()', () => {
     // lets declare a new variable for our bank account
-    let bankAccount
+    let bankAccount;
 
     beforeEach(() => {
       // lets create a new instance of a BankAccount for each test
@@ -21,6 +21,8 @@ describe('BankAccount', () => {
   })
 
   describe('displayBalance()', () => {
+    let bankAccount;
+
     beforeEach(() => {
       // lets create a new instance of a BankAccount for each test
       bankAccount = new BankAccount();
@@ -33,6 +35,18 @@ describe('BankAccount', () => {
     it('a new bank account should have a balance of 0', () => {
       expect(bankAccount.displayBalance()).toEqual(0);
     }); 
+  })
 
+  describe('withdraw()', () => {
+    let bankAccount;
+
+    beforeEach(() => {
+      // lets create a new instance of a BankAccount for each test
+      bankAccount = new BankAccount();
+    })
+
+    it('should be able to call withdraw without raising an error', () => {
+      expect(bankAccount.withdraw()).not.toThrow;
+    }); 
   })
 });
