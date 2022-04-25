@@ -94,5 +94,9 @@ This user story requires the user to be able to desposit money into their bank a
 Notes: 
   - try to test for behaviour over state
 
-- [ ] begin by setting up your repository with the required dependencies
-- [ ] then create a test to expect calling the method deposit on a bank account object to not raise an error
+- [x] begin by setting up your repository with the required dependencies
+- [x] then create a test to expect calling the method deposit on a bank account object to not raise an error
+    - I passed this test by simply creating a BankAccount class with a method deposit
+
+We still need to create the logic for our deposit method, it should update the account balance by the deposit amount
+- [ ] create another test which expects the deposit method to return amount of money being deposited 
