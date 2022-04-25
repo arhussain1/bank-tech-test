@@ -100,6 +100,15 @@ Notes:
 
 We still need to create the logic for our deposit method, it should update the account balance by the deposit amount
 - [x] create another test which expects the deposit method to return amount of money being deposited 
+    - I added a return statement that returns the amount being deposited when deposite() is called
 
 Lets also test drive creating another method which displays the balance of the account when called:
-- [ ] create a test that expects a new account to have a balance of 0
+- [x] create a test that expects calling displayBalance to not raise an error
+    - I created the displayBalance method
+
+- [x] create a test that expects a new bank account to have a balance of zero
+    - I added a property of balance to the class and initialized it with a balance of zero for every new instance
+    - I simply returned that value using displayBalance
+
+Now we can use displayBalance() to complete the logic for our deposit method
+- [ ] create a test that deposits 500 and expects displayBalance to return 500
