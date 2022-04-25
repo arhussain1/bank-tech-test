@@ -1,6 +1,7 @@
 
 class BankAccount {
-  deposit() {
+  deposit(amount) {
+    return amount
   }
 }
 

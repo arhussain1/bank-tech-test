@@ -99,4 +99,7 @@ Notes:
     - I passed this test by simply creating a BankAccount class with a method deposit
 
 We still need to create the logic for our deposit method, it should update the account balance by the deposit amount
-- [ ] create another test which expects the deposit method to return amount of money being deposited 
+- [x] create another test which expects the deposit method to return amount of money being deposited 
+
+Lets also test drive creating another method which displays the balance of the account when called:
+- [ ] create a test that expects a new account to have a balance of 0
