@@ -12,11 +12,12 @@ describe('BankAccount', () => {
 
     it('should be able to call deposit without raising an error', () => {
       expect(bankAccount.deposit()).not.toThrow;
-    }); 
-  
-    it('should return the amount being deposited', () => {  
-      expect(bankAccount.deposit(500)).toEqual(500)
-    }); 
+    });  
+
+    it('should desposit 500 into the account', () => {
+      bankAccount.deposit(500);
+      expect(bankAccount.displayBalance()).toEqual(500)
+    })
   })
 
   describe('displayBalance()', () => {

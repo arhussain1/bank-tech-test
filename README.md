@@ -111,4 +111,15 @@ Lets also test drive creating another method which displays the balance of the a
     - I simply returned that value using displayBalance
 
 Now we can use displayBalance() to complete the logic for our deposit method
-- [ ] create a test that deposits 500 and expects displayBalance to return 500
+- [x] create a test that deposits 500 and expects displayBalance to return 500
+    - I added logic to the deposit method to increase the balance of the bank account by the amount being deposited
+
+Final notes on this user story:
+  - I am removing the need for deposit to return the amount being deposited as it is an unecessary test.
+
+#### Stage 4 - Completing user story 2
+This user story requires that the user can withdraw money from his account.
+
+To save time i am only going to list some general steps i am going to take:
+  - should not raise an error when being called
+  - the withdraw method should minus the amount from the balance

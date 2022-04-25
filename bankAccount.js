@@ -5,6 +5,7 @@ class BankAccount {
   }
 
   deposit(amount) {
+    this.balance += amount
     return amount
   }
 
