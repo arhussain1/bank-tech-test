@@ -59,5 +59,11 @@ describe('BankAccount', () => {
       //expect the remaining amount to be 300
       expect(bankAccount.displayBalance()).toEqual(300)
     }); 
+
+    it('should receive an error when trying to withdraw more than the available balance', () => {
+      //add 500 to the account
+      bankAccount.deposit(500);
+      expect(() => bankAccount.withdraw(600)).toThrow('Not enough money, please add funds')
+    }); 
   })
 });

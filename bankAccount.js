@@ -10,7 +10,8 @@ class BankAccount {
   }
 
   withdraw(amount) {
-    this.balance -= amount
+    if (this.balance <= amount) throw('Not enough money, please add funds')
+    this.balance -= amount 
   }
 
   displayBalance() {

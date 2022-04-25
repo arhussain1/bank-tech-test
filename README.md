@@ -126,3 +126,19 @@ To save time i am only going to list some general steps i am going to take:
 
 Edge cases:
 - one edge case i came up with is, the user should be able to withdraw more than is available in their account
+
+#### Stage 5 - Completing user story 3
+This user story is slightly more complex, as it requires making a decision, is adding the responsibility of printing statements to the Bank Account class in breach of the SRP (Single Responsibility Principle). If so that would require creating a separate class and deciding how the classes will interact with each other.
+
+In this case, I will refer back to my planning diagram, I decided that the Bank Account should only be responsible for managing the users account balance.
+
+And the responsibility of printing the account statement will be role of a second Statement class, we can then forward the print method onto the statement class. 
+
+I also need to store the account history, each time deposit or withdraw is called this needs to be logged somewhere using an logActivity method, I decided to keep this on the Statement class.
+
+##### Lets begin test driving our Statement class's addEntry method:
+- It should take two parameters the amount and the action(deposit=credit or withdrawal=debit)
+- It should store this information in a hash as an element in an array on the Statement instance
+- Along with the amount and action information we also need the date stored aswell
+  - This will most likely be achieved using the Date class, we will need to mock this dependency
+
