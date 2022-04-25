@@ -9,8 +9,8 @@ class BankAccount {
     return amount
   }
 
-  withdraw() {
-    
+  withdraw(amount) {
+    this.balance -= amount
   }
 
   displayBalance() {

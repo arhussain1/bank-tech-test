@@ -123,3 +123,6 @@ This user story requires that the user can withdraw money from his account.
 To save time i am only going to list some general steps i am going to take:
   - should not raise an error when being called
   - the withdraw method should minus the amount from the balance
+
+Edge cases:
+- one edge case i came up with is, the user should be able to withdraw more than is available in their account

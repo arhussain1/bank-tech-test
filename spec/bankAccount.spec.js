@@ -48,5 +48,16 @@ describe('BankAccount', () => {
     it('should be able to call withdraw without raising an error', () => {
       expect(bankAccount.withdraw()).not.toThrow;
     }); 
+
+    it('should minus the amount being withdrawn from the account', () => {
+      //add 500 to the account
+      bankAccount.deposit(500);
+
+      //withdraw 200 from the account
+      bankAccount.withdraw(200)
+
+      //expect the remaining amount to be 300
+      expect(bankAccount.displayBalance()).toEqual(300)
+    }); 
   })
 });
