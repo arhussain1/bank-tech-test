@@ -18,8 +18,8 @@ class BankAccount {
     return this.balance
   }
 
-  logActivity() {
-    
+  sendActivity() {
+
   }
 }
 

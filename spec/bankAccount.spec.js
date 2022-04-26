@@ -67,7 +67,7 @@ describe('BankAccount', () => {
     }); 
   })
 
-  describe('logActivity()', () => {
+  describe('sendActivity()', () => {
     let bankAccount;
 
     beforeEach(() => {
@@ -75,8 +75,8 @@ describe('BankAccount', () => {
       bankAccount = new BankAccount();
     })
 
-    it('should be able to call logActivity without raising an error', () => {
-      expect(bankAccount.logActivity()).not.toThrow;
+    it('should be able to call sendActivity without raising an error', () => {
+      expect(bankAccount.sendActivity()).not.toThrow;
     });
   })
 });
