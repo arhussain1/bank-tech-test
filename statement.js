@@ -3,12 +3,21 @@ class Statement {
     this.activityLog = []
   }
 
-  logActivity(amount, credit = '', debit = '', date = this.#formattedDate()) {
-    this.activityLog.push({amount: amount, credit: credit, debit: debit, date: date})
+  logActivity(transaction, date = this.#formattedDate()) {
+    this.activityLog.push({balance: transaction.balance, credit: transaction.credit, debit: transaction.debit, date: date})
   }
 
   printStatement() {
-    console.log('date || credit || debit || balance')
+    let array = ['date || credit || debit || balance']
+
+    this.activityLog.forEach(transaction => {
+
+      const string = `${transaction.date} || 1000.00 || ${transaction.debit}|| 1000.00`
+      array.push(string);
+    })
+
+    console.log(array.join('\n'))
+    return (array.join('\n'))
   }
 
   // lets create some private methods

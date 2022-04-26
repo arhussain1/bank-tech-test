@@ -11,38 +11,35 @@ describe(Statement, () => {
     })
 
     it('should be able to call logActivity without raising an error', () => {
-      expect(statement.logActivity()).not.toThrow;
+      const transaction = {balance: 200, credit: 200, debit: ' '}
+
+      expect(statement.logActivity(transaction)).not.toThrow;
     });  
 
     it('should log the activity for a deposit transaction', () => {
-      const amount = 200;
-      const credit = 'credit';
-      const debit = '';
-      statement.logActivity(amount, credit, debit);
+      const transaction = {balance: 200, credit: 200, debit: ' '}
+      statement.logActivity(transaction);
 
-      expect(statement.activityLog[0].amount).toEqual(200)
-      expect(statement.activityLog[0].credit).toEqual('credit')
-      expect(statement.activityLog[0].debit).toEqual('')
+      expect(statement.activityLog[0].balance).toEqual(200)
+      expect(statement.activityLog[0].credit).toEqual(200)
+      expect(statement.activityLog[0].debit).toEqual(' ')
     });
 
     it('should log the activity for a withdrawal transaction', () => {
-      const amount = 200;
-      const credit = '';
-      const debit = 'debit';
-      statement.logActivity(amount, credit, debit);
+      const transaction = {balance: 200, credit: ' ', debit: 200}
 
-      expect(statement.activityLog[0].amount).toEqual(200)
-      expect(statement.activityLog[0].credit).toEqual('')
-      expect(statement.activityLog[0].debit).toEqual('debit')
+      statement.logActivity(transaction);
+
+      expect(statement.activityLog[0].balance).toEqual(200)
+      expect(statement.activityLog[0].credit).toEqual(' ')
+      expect(statement.activityLog[0].debit).toEqual(200)
     });  
 
     it('should log the date any time logActivity is called', () => {
-      const amount = 200;
-      const credit = '';
-      const debit = 'debit';
+      const transaction = {balance: 200, credit: ' ', debit: 200}
       const date = '10/04/2022'
 
-      statement.logActivity(amount, credit, debit, date);
+      statement.logActivity(transaction, date);
       
       expect(statement.activityLog[0].date).toEqual('10/04/2022')
     })
@@ -61,20 +58,15 @@ describe(Statement, () => {
     })
 
     it('should print the correct column headings', () => {
-      const amount = 1000;
-      const credit = 'credit';
-      const debit = '';
+      expect(statement.printStatement()).toEqual('date || credit || debit || balance')
+    })
+
+    it('should print statement information correctly for one transaction', () => {
+      const transaction = {balance: 1000.00, credit: 1000.00, debit: ''}
       const date = '10/01/2022'
 
-      statement.logActivity(amount, credit, debit, date);
-
-      // lets mock the console log function so we can test if it receives the correct information such as date, credit, debit and balance
-      console.log = jest.fn();
-
-      statement.printStatement();
-      
-      // first time console log is called in this test
-      expect(console.log.mock.calls[0][0]).toEqual('date || credit || debit || balance')
+      statement.logActivity(transaction, date);
+      expect(statement.printStatement()).toEqual('date || credit || debit || balance\n10/01/2022 || 1000.00 || || 1000.00')
     })
 
   })
