@@ -14,11 +14,11 @@ In addition, the main goal of this exercise is to practice creating professional
 - Data can be kept in memory (it doesn't need to be stored to a database or anything).
 
 #### The acceptance criteria is:
-**Given** a client makes a deposit of 1000 on 10-01-2023
-**And** a deposit of 2000 on 13-01-2023
-**And** a withdrawal of 500 on 14-01-2023
-**When** she prints her bank statement
-**Then** she would see
+- **Given** a client makes a deposit of 1000 on 10-01-2023
+- **And** a deposit of 2000 on 13-01-2023
+- **And** a withdrawal of 500 on 14-01-2023
+- **When** she prints her bank statement
+- **Then** she would see
 
 ```
 date || credit || debit || balance
@@ -34,6 +34,7 @@ Step 1:
 
 Step 2: 
   - Install all required dependencies using the following command
+  
   ``npm install``
 
 
@@ -44,13 +45,16 @@ First ensure you have completed the steps in **How to install this software?**
 
 #### Setting up node
 Begin by opening the node REPL by running the node command:
+  
   ``node``
 
 require the following file to load the software into the REPL
+  
   ``const BankAccount = require('./bankAccount.js')``
 
 #### Creating an account
 You can create your own bank account by creating an instance of the **BankAccount** class
+  
   ``const myBank = new BankAccount()``
 
 #### displayBalance()
@@ -115,6 +119,7 @@ Testing for this project is done using Jest
 To run tests, first ensure you have completed the steps in **How to install this software?** 
 
 Then navigate to the project directory and run the following command:
+
   ``jest``
 
 
@@ -126,13 +131,13 @@ I began by looking at the requirements and came up with the following general ap
   - I will be using JavaScript and Jest
   - This software will be run by loading it into Node and interacting with it by calling methods
   
-  I also did some basic design by mapping out what classes I would need and how they would interact: 
-    - I will have a BankAccount class which is responsible for handling deposits and withdrawals
-    - Instead of adding additional responsibility to the BankAccount class for handling logic for printing statements 
-    I decided to extract that into another class AccountStatement which is responsible for keeping a log of deposits and 
-    withdrawals and printing them to the user.
-  
-  - I will not be using a database to store any information, so the data will be kept in memory for the current session only
+I also did some basic design by mapping out what classes I would need and how they would interact: 
+  - I will have a BankAccount class which is responsible for handling deposits and withdrawals
+  - Instead of adding additional responsibility to the BankAccount class for handling logic for printing statements 
+  I decided to extract that into another class AccountStatement which is responsible for keeping a log of deposits and 
+  withdrawals and printing them to the user.
+
+- I will not be using a database to store any information, so the data will be kept in memory for the current session only
 
 #### Stage 2 - User Stories
 
