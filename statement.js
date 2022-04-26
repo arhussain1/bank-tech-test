@@ -26,7 +26,6 @@ class Statement {
     const data = this.createStatement()
 
     console.log(data.join('\n'))
-    return (data.join('\n'))
   }
 
   // private methods

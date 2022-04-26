@@ -58,15 +58,21 @@ describe(Statement, () => {
     })
 
     it('should print the correct column headings', () => {
-      expect(statement.printStatement()).toEqual('date || credit || debit || balance')
+      const logSpy = jest.spyOn(console, 'log');
+      statement.printStatement();
+
+      expect(logSpy).toHaveBeenCalledWith('date || credit || debit || balance')
     })
 
     it('should print statement information correctly for one transaction', () => {
       const transaction = {balance: 1000.00, credit: 1000.00, debit: ''}
       const date = '10/01/2022'
 
+      const logSpy = jest.spyOn(console, 'log');
+
       statement.logActivity(transaction, date);
-      expect(statement.printStatement()).toEqual('date || credit || debit || balance\n10/01/2022 || 1000.00 || || 1000.00')
+      statement.printStatement();
+      expect(logSpy).toHaveBeenCalledWith('date || credit || debit || balance\n10/01/2022 || 1000.00 || || 1000.00')
     })
 
   })
