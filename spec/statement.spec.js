@@ -14,7 +14,7 @@ describe(Statement, () => {
       expect(statement.logActivity()).not.toThrow;
     });  
 
-    it('should store the amount for a deposit transaction', () => {
+    it('should log the activity for a deposit transaction', () => {
       const amount = 200;
       const credit = 'credit';
       const debit = '';
@@ -25,7 +25,7 @@ describe(Statement, () => {
       expect(statement.activityLog[0].debit).toEqual('')
     });
 
-    it('should store the amount for a withdrawal transaction', () => {
+    it('should log the activity for a withdrawal transaction', () => {
       const amount = 200;
       const credit = '';
       const debit = 'debit';
@@ -36,6 +36,15 @@ describe(Statement, () => {
       expect(statement.activityLog[0].debit).toEqual('debit')
     });  
 
+    it('should log the date any time logActivity is called', () => {
+      const amount = 200;
+      const credit = '';
+      const debit = 'debit';
+      const date = '10/04/2022'
 
+      statement.logActivity(amount, credit, debit, date);
+      
+      expect(statement.activityLog[0].date).toEqual('10/04/2022')
+    })
   })
 });

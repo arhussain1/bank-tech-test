@@ -136,9 +136,24 @@ And the responsibility of printing the account statement will be role of a secon
 
 I also need to store the account history, each time deposit or withdraw is called this needs to be logged somewhere using an logActivity method, I decided to keep this on the Statement class.
 
-##### Lets begin test driving our Statement class's addEntry method:
-- It should take two parameters the amount and the action(deposit=credit or withdrawal=debit)
+##### Lets begin test driving our Statement class's logActivity method:
+- It should take three parameters the amount and the action(deposit=credit or withdrawal=debit)
 - It should store this information in a hash as an element in an array on the Statement instance
 - Along with the amount and action information we also need the date stored aswell
   - This will most likely be achieved using the Date class, we will need to mock this dependency
+
+Added notes:
+adding the date is a bit more complex as the Date class does not provide dates in dd/mm/yyyy format so we will need to create some addition methods to format the date.
+  - create a makeTwoDigits method to add a 0 to 1 digit date numbers
+  - use the Date class's getday, getMonth and getFullYear methods to format your date.
+- Using dependency injection for the date object I can inject a date string in order to test that the date is being saved.
+
+##### Now lets test drive the print statement
+- It should simply iterate through each element of the activityLog array and log it to the console in the correct format
+  - to test this, log a transaction using logActivity and then expect printStatement to return a string of the following format:
+  ```
+  'date || credit || debit || balance'
+  '10/01/2023 || 1000.00 || || 1000.00'
+  ```
+
 
