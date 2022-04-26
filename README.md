@@ -175,3 +175,6 @@ Do the same for the withdraw method
 Finally add print functionality to your BankAccount class which forwards to the statement classes print method
   - Ensure you mock the dependency
 
+Final touch ups:
+  - we forgot about the order in which the transactions should appear most recent at the top, I have done it the wrong way round. To fix this I will add another test to expect a particular order
+

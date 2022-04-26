@@ -8,18 +8,21 @@ class Statement {
   }
 
   createStatement() {
-    let array = ['date || credit || debit || balance']
+    const header = ['date || credit || debit || balance']
+    let body = []
 
     this.activityLog.forEach(transaction => {
       const balance = this.#formatMoney(transaction.balance)
       const credit = this.#formatMoney(transaction.credit)
       const debit = this.#formatMoney(transaction.debit)
 
-      const string = `${transaction.date} || ${credit} || ${debit}|| ${balance}`
-      array.push(string);
+      const string = `${transaction.date} || ${credit} || ${debit} || ${balance}`
+      body.push(string);
     })
 
-    return array
+    const organisedArray = header.concat(body.reverse())
+
+    return organisedArray
   }
 
   printStatement() {

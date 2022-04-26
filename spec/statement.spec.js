@@ -47,9 +47,9 @@ describe(Statement, () => {
   })
   describe('printStatement()', () => {
     let statement;
-
     beforeEach(() => {
       // lets create a new instance of a BankAccount for each test
+      jest.resetAllMocks();
       statement = new Statement();
     })
 
@@ -72,7 +72,7 @@ describe(Statement, () => {
 
       statement.logActivity(transaction, date);
       statement.printStatement();
-      expect(logSpy).toHaveBeenCalledWith('date || credit || debit || balance\n10/01/2022 || 1000.00 || || 1000.00')
+      expect(logSpy).toHaveBeenCalledWith('date || credit || debit || balance\n10/01/2022 || 1000.00 ||  || 1000.00')
     })
 
   })
@@ -95,9 +95,20 @@ describe(Statement, () => {
 
       statement.logActivity(transaction, date);
 
-      expect(statement.createStatement()).toEqual(['date || credit || debit || balance', '10/01/2022 || 1000.00 || || 1000.00'])
+      expect(statement.createStatement()).toEqual(['date || credit || debit || balance', '10/01/2022 || 1000.00 ||  || 1000.00'])
+    })
+
+    it('should generate an array with the most recent to the left', () => {
+      const transaction1 = {balance: 1000.00, credit: 1000.00, debit: ''}
+      const date1 = '10/01/2022'
+      const transaction2 = {balance: 600.00, credit: '', debit: 400}
+      const date2 = '15/01/2022'
+
+      statement.logActivity(transaction1, date1);
+      statement.logActivity(transaction2, date2);
+
+      expect(statement.createStatement()).toEqual(['date || credit || debit || balance','15/01/2022 ||  || 400.00 || 600.00', '10/01/2022 || 1000.00 ||  || 1000.00'])
     })
 
   })
-
 });
