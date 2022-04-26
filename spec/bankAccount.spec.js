@@ -76,18 +76,18 @@ describe('BankAccount', () => {
       expect(bankAccount.sendActivity()).not.toThrow;
     });
 
-    it('should pass amount of the transaction to a statement class instance', () => {
+    it('should pass the amount and type of transaction to the statement class logActivity method', () => {
       // we need to mock the log Activity method of the Statement class
       const mockLogActivity = jest
         .spyOn(Statement.prototype, 'logActivity')
 
       const bankAccount = new BankAccount();
 
-      const amount = 200
+      const transactionInformation = {balance: 200, credit: 200, debit: ''}
+      
+      bankAccount.sendActivity(transactionInformation);
 
-      bankAccount.sendActivity(amount);
-
-      expect(mockLogActivity).toHaveBeenCalledWith(amount)
+      expect(mockLogActivity).toHaveBeenCalledWith(transactionInformation)
     });
   })
 });

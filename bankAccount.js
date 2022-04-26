@@ -20,8 +20,8 @@ class BankAccount {
     return this.balance
   }
 
-  sendActivity(amount) {
-    this.statement.logActivity(amount)
+  sendActivity(transactionInformation) {
+    this.statement.logActivity(transactionInformation)
   }
 }
 
