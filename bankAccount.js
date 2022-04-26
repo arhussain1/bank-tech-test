@@ -8,12 +8,16 @@ class BankAccount {
 
   deposit(amount) {
     this.balance += amount
-    return amount
+    const transactionInformation = {balance: this.balance, credit: amount, debit: ''}
+    this.sendActivity(transactionInformation)
   }
 
   withdraw(amount) {
     if (this.balance <= amount) throw('Not enough money, please add funds')
     this.balance -= amount 
+
+    const transactionInformation = {balance: this.balance, credit: '', debit: ''}
+    this.sendActivity(transactionInformation)
   }
 
   displayBalance() {
