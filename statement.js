@@ -44,11 +44,8 @@ class Statement {
   }
 
   #formatMoney(num) {
-    if (typeof num == "number") {
-      return num.toFixed(2)
-    } else {
-      return num
-    }
+    if (typeof num == "number") return num.toFixed(2)
+    return num
   }
 }
 
