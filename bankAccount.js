@@ -26,7 +26,6 @@ class BankAccount {
 
   printStatement() {
     const data = this.statement.createStatement();
-    console.log(data)
     console.log(data.join('\n'))
   }
 
