@@ -4,7 +4,7 @@
 
 For this project I will be attempting my first tech test, the task is to design a simple software to manage a users bank account, it should be able to handle deposits and withdrawals and also printing an account statement. 
 
-In addition, the main goal of this exercise is to practice creating professional quality code which displays my OO (object oriented) design abilities i.e. my ability to plan out what classes, methods I need and how they will interact with eachother. Also, to show my ability to use TDD (Test Driven Development) to drive the creation of classes and methods to produce well tested code.
+In addition, the main goal of this exercise is to practice creating professional quality code which displays my OO (object-oriented) design abilities i.e. my ability to plan out what classes, methods I need and how they will interact with each other. Also, to show my ability to use TDD (Test Driven Development) to drive the creation of classes and methods to produce well tested code.
 
 #### The requirements for this project are listed below:
 
@@ -171,7 +171,7 @@ I want to be able to print a statement
 ```
 
 #### Stage 3 - Completing User Story 1
-This user story requires the user to be able to desposit money into their bank account.
+This user story requires the user to be able to deposit money into their bank account.
 
 Notes: 
   - try to test for behaviour over state
@@ -182,9 +182,9 @@ Notes:
 
 We still need to create the logic for our deposit method, it should update the account balance by the deposit amount
 - [x] create another test which expects the deposit method to return amount of money being deposited 
-    - I added a return statement that returns the amount being deposited when deposite() is called
+    - I added a return statement that returns the amount being deposited when deposit() is called
 
-Lets also test drive creating another method which displays the balance of the account when called:
+Let's also test drive creating another method which displays the balance of the account when called:
 - [x] create a test that expects calling displayBalance to not raise an error
     - I created the displayBalance method
 
@@ -197,17 +197,17 @@ Now we can use displayBalance() to complete the logic for our deposit method
     - I added logic to the deposit method to increase the balance of the bank account by the amount being deposited
 
 Final notes on this user story:
-  - I am removing the need for deposit to return the amount being deposited as it is an unecessary test.
+  - I am removing the need for deposit to return the amount being deposited as it is an necessary test.
 
 #### Stage 4 - Completing user story 2
 This user story requires that the user can withdraw money from his account.
 
-To save time i am only going to list some general steps i am going to take:
+To save time I am only going to list some general steps i am going to take:
   - should not raise an error when being called
   - the withdraw method should minus the amount from the balance
 
 Edge cases:
-- one edge case i came up with is, the user should be able to withdraw more than is available in their account
+- one edge case I came up with is, the user should be able to withdraw more than is available in their account
 
 #### Stage 5 - Completing user story 3
 This user story is slightly more complex, as it requires making a decision, is adding the responsibility of printing statements to the Bank Account class in breach of the SRP (Single Responsibility Principle). If so that would require creating a separate class and deciding how the classes will interact with each other.
@@ -218,19 +218,19 @@ And the responsibility of printing the account statement will be role of a secon
 
 I also need to store the account history, each time deposit or withdraw is called this needs to be logged somewhere using an logActivity method, I decided to keep this on the Statement class.
 
-##### Lets begin test driving our Statement class's logActivity method:
+##### Let's begin test-driving our Statement class's logActivity method:
 - It should take three parameters the amount and the action(deposit=credit or withdrawal=debit)
 - It should store this information in a hash as an element in an array on the Statement instance
-- Along with the amount and action information we also need the date stored aswell
+- Along with the amount and action information we also need the date stored as well
   - This will most likely be achieved using the Date class, we will need to mock this dependency
 
 Added notes:
-adding the date is a bit more complex as the Date class does not provide dates in dd/mm/yyyy format so we will need to create some addition methods to format the date.
-  - create a makeTwoDigits method to add a 0 to 1 digit date numbers
+adding the date is a bit more complex as the Date class does not provide dates in dd/mm/yyyy format, so we will need to create some addition methods to format the date.
+  - Create a makeTwoDigits method to add a 0 to 1 digit date numbers
   - use the Date class's getday, getMonth and getFullYear methods to format your date.
 - Using dependency injection for the date object I can inject a date string in order to test that the date is being saved.
 
-##### Now lets test drive the print statement
+##### Now let's test drive the print statement
 - It should simply iterate through each element of the activityLog array and log it to the console in the correct format
   - to test this, log a transaction using logActivity and then expect printStatement to return a string of the following format:
   ```
@@ -242,19 +242,19 @@ Added notes:
   - the logActivity method has been modified to accept a hash to reduce the number of arguments required
   - the currency values need to be formatted to 2 decimal places
 
-Ok, so I currently have a functioning statement class that can receive activity thats ocurring on the Bank Account and keep a record of it. Also, we can print statements in the correct format.
+Ok, so I currently have a functioning statement class that can receive activity that's occurring on the Bank Account and keep a record of it. Also, we can print statements in the correct format.
 
-However, our printStatement class has too much responsibility, it's printing the statement to the console and also generating the statement aswell. Let extract generating the statement to a CreateStatement method
+However, our printStatement class has too much responsibility, it's printing the statement to the console and also generating the statement as well. Let extract generating the statement to a CreateStatement method
 
 #### Stage 6 - Update BankAccount class to forward commands onto the statement class
 Lets start with the deposit method:
   - it should add the amount deposited to the total balance of the bank account
-  - it should call upon another method whose responsibility it is to logActivity(as this method will be used by withdraw aswell we should pass some arguments aswell)
+  - it should call upon another method whose responsibility it is to logActivity(as this method will be used by withdraw as well we should pass some arguments as well)
   - make sure to mock any external dependencies 
 
 Do the same for the withdraw method
 
-Finally add print functionality to your BankAccount class which forwards to the statement classes print method
+Finally, add print functionality to your BankAccount class which forwards to the statement classes print method
   - Ensure you mock the dependency
 
 Final touch ups:
