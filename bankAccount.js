@@ -24,6 +24,10 @@ class BankAccount {
     return this.balance
   }
 
+  printStatement() {
+    
+  }
+
   sendActivity(transactionInformation) {
     this.statement.logActivity(transactionInformation)
   }

@@ -84,10 +84,18 @@ describe('BankAccount', () => {
       const bankAccount = new BankAccount();
 
       const transactionInformation = {balance: 200, credit: 200, debit: ''}
-      
+
       bankAccount.sendActivity(transactionInformation);
 
       expect(mockLogActivity).toHaveBeenCalledWith(transactionInformation)
+    });
+  })
+
+  describe('printStatement()', () => {
+    it('should be able to call printStatement without raising an error', () => {
+      const bankAccount = new BankAccount();
+
+      expect(bankAccount.printStatement()).not.toThrow;
     });
   })
 });

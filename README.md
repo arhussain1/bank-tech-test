@@ -170,3 +170,8 @@ Lets start with the deposit method:
   - it should call upon another method whose responsibility it is to logActivity(as this method will be used by withdraw aswell we should pass some arguments aswell)
   - make sure to mock any external dependencies 
 
+Do the same for the withdraw method
+
+Finally add print functionality to your BankAccount class which forwards to the statement classes print method
+  - Ensure you mock the dependency
+
