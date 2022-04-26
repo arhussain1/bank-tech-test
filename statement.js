@@ -8,13 +8,9 @@ class Statement {
   }
 
   createStatement() {
-    
-  }
-
-  printStatement() {
     let array = ['date || credit || debit || balance']
 
-    this.activityLog.forEach(transaction => {
+        this.activityLog.forEach(transaction => {
       const balance = this.#formatMoney(transaction.balance)
       const credit = this.#formatMoney(transaction.credit)
       const debit = this.#formatMoney(transaction.debit)
@@ -23,8 +19,14 @@ class Statement {
       array.push(string);
     })
 
-    console.log(array.join('\n'))
-    return (array.join('\n'))
+    return array
+  }
+
+  printStatement() {
+    const data = this.createStatement()
+
+    console.log(data.join('\n'))
+    return (data.join('\n'))
   }
 
   // private methods

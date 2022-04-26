@@ -79,8 +79,19 @@ describe(Statement, () => {
       statement = new Statement();
     })
 
-    it('should not raise an error when printStatement is called', () => {
+    it('should not raise an error when createStatement is called', () => {
       expect(statement.createStatement()).not.toThrowError
     })
+
+    it('should generate an array containing all required information for printing statements', () => {
+      const transaction = {balance: 1000.00, credit: 1000.00, debit: ''}
+      const date = '10/01/2022'
+
+      statement.logActivity(transaction, date);
+
+      expect(statement.createStatement()).toEqual(['date || credit || debit || balance', '10/01/2022 || 1000.00 || || 1000.00'])
+    })
+
   })
+
 });
