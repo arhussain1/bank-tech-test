@@ -159,6 +159,9 @@ adding the date is a bit more complex as the Date class does not provide dates i
 Added notes: 
   - the logActivity method has been modified to accept a hash to reduce the number of arguments required
   - the currency values need to be formatted to 2 decimal places
-  
+
+Ok, so I currently have a functioning statement class that can receive activity thats ocurring on the Bank Account and keep a record of it. Also, we can print statements in the correct format.
+
+However, our printStatement class has too much responsibility, it's printing the statement to the console and also generating the statement aswell. Let extract generating the statement to a CreateStatement method
 
 

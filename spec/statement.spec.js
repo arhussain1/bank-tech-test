@@ -71,4 +71,16 @@ describe(Statement, () => {
 
   })
 
+  describe('createStatement()', () => {
+    let statement;
+
+    beforeEach(() => {
+      // lets create a new instance of a BankAccount for each test
+      statement = new Statement();
+    })
+
+    it('should not raise an error when printStatement is called', () => {
+      expect(statement.createStatement()).not.toThrowError
+    })
+  })
 });

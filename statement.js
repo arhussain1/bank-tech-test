@@ -7,6 +7,10 @@ class Statement {
     this.activityLog.push({balance: transaction.balance, credit: transaction.credit, debit: transaction.debit, date: date})
   }
 
+  createStatement() {
+    
+  }
+
   printStatement() {
     let array = ['date || credit || debit || balance']
 
