@@ -24,7 +24,6 @@ class Statement {
 
   printStatement() {
     const data = this.createStatement()
-
     console.log(data.join('\n'))
   }
 

@@ -70,9 +70,12 @@ describe('BankAccount', () => {
   })
 
   describe('sendActivity()', () => {
-    it('should be able to call sendActivity without raising an error', () => {
-      const bankAccount = new BankAccount();
+    beforeEach(() => {
+      // lets create a new instance of a BankAccount for each test
+      bankAccount = new BankAccount();
+    })
 
+    it('should be able to call sendActivity without raising an error', () => {
       expect(bankAccount.sendActivity()).not.toThrow;
     });
 
@@ -80,8 +83,6 @@ describe('BankAccount', () => {
       // we need to mock the log Activity method of the Statement class
       const mockLogActivity = jest
         .spyOn(Statement.prototype, 'logActivity')
-
-      const bankAccount = new BankAccount();
 
       const transactionInformation = {balance: 200, credit: 200, debit: ''}
 
@@ -93,9 +94,16 @@ describe('BankAccount', () => {
 
   describe('printStatement()', () => {
     it('should be able to call printStatement without raising an error', () => {
-      const bankAccount = new BankAccount();
-
       expect(bankAccount.printStatement()).not.toThrow;
+    });
+
+    it('should call printStatement() on the statement class', () => {
+      const mockPrintStatement = jest
+        .spyOn(Statement.prototype, 'printStatement')
+
+      bankAccount.printStatement();
+
+      expect(mockPrintStatement).toHaveBeenCalled()
     });
   })
 });

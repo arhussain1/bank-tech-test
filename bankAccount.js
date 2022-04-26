@@ -25,7 +25,7 @@ class BankAccount {
   }
 
   printStatement() {
-    
+    this.statement.printStatement();
   }
 
   sendActivity(transactionInformation) {
