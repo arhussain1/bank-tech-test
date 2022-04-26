@@ -70,6 +70,8 @@ describe('BankAccount', () => {
   })
 
   describe('printStatement()', () => {
+    let bankAccount;
+    
     beforeEach(() => {
       // lets create a new instance of a BankAccount for each test
       bankAccount = new BankAccount();
