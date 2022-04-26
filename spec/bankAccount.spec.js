@@ -71,23 +71,50 @@ describe('BankAccount', () => {
 
   describe('printStatement()', () => {
     let bankAccount;
+    const mockStatement = new Statement();
+    const returnedArray1 = ['date || credit || debit || balance']
     
     beforeEach(() => {
+      jest.resetAllMocks();
       // lets create a new instance of a BankAccount for each test
-      bankAccount = new BankAccount();
+      bankAccount = new BankAccount(mockStatement);
+      mockStatement.createStatement.mockImplementation(() => returnedArray1)
     })
 
     it('should be able to call printStatement without raising an error', () => {
       expect(bankAccount.printStatement()).not.toThrow;
     });
 
-    it('should call printStatement() on the statement class', () => {
-      const mockPrintStatement = jest
-        .spyOn(Statement.prototype, 'printStatement')
+    it('should call createStatement() on the statement class', () => {
+      jest.resetAllMocks();
+
+      const mockCreateStatement = jest
+        .spyOn(Statement.prototype, 'createStatement')
+        .mockImplementation(() => {
+          return returnedArray1
+        })
 
       bankAccount.printStatement();
 
-      expect(mockPrintStatement).toHaveBeenCalled()
+      expect(mockCreateStatement).toHaveBeenCalled()
     });
+
+    it('should print the correct column headings', () => {
+      const logSpy = jest.spyOn(console, 'log');
+      bankAccount.printStatement();
+
+      expect(logSpy).toHaveBeenCalledWith('date || credit || debit || balance')
+    })
+
+    it('should print statement information correctly for one transaction', () => {
+      jest.resetAllMocks();
+      const returnedArray2 = ['date || credit || debit || balance', '10/01/2022 || 1000.00 ||  || 1000.00']
+      mockStatement.createStatement.mockImplementation(() => returnedArray2)
+
+      const logSpy = jest.spyOn(console, 'log');
+
+      bankAccount.printStatement();
+      expect(logSpy).toHaveBeenCalledWith('date || credit || debit || balance\n10/01/2022 || 1000.00 ||  || 1000.00')
+    })
   })
 });

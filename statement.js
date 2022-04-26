@@ -25,11 +25,6 @@ class Statement {
     return organisedArray
   }
 
-  printStatement() {
-    const data = this.createStatement()
-    console.log(data.join('\n'))
-  }
-
   // private methods
   #makeTwoDigits(num) {
     return num.toString().padStart(2, 0)

@@ -45,37 +45,6 @@ describe(Statement, () => {
     })
 
   })
-  describe('printStatement()', () => {
-    let statement;
-    beforeEach(() => {
-      // lets create a new instance of a BankAccount for each test
-      jest.resetAllMocks();
-      statement = new Statement();
-    })
-
-    it('should not raise an error when printStatement is called', () => {
-      expect(statement.printStatement()).not.toThrowError
-    })
-
-    it('should print the correct column headings', () => {
-      const logSpy = jest.spyOn(console, 'log');
-      statement.printStatement();
-
-      expect(logSpy).toHaveBeenCalledWith('date || credit || debit || balance')
-    })
-
-    it('should print statement information correctly for one transaction', () => {
-      const transaction = {balance: 1000.00, credit: 1000.00, debit: ''}
-      const date = '10/01/2022'
-
-      const logSpy = jest.spyOn(console, 'log');
-
-      statement.logActivity(transaction, date);
-      statement.printStatement();
-      expect(logSpy).toHaveBeenCalledWith('date || credit || debit || balance\n10/01/2022 || 1000.00 ||  || 1000.00')
-    })
-
-  })
 
   describe('createStatement()', () => {
     let statement;

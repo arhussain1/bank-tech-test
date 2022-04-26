@@ -260,4 +260,10 @@ Finally, add print functionality to your BankAccount class which forwards to the
 Final touch ups:
   - I forgot about the order in which the transactions should appear most recent at the top, I have done it the wrong way round. To fix this I will add another test to expect a particular order
   - We should also make the sendActivity method private as the user does not need access to it
+  
 
+### Post Self Assessment
+Maybe the statement class should not be printing itself, we already have a createStatement method which provides the data to the BankAccount class so that it can simply print the statement. This eliminates the need for an additional unnecessary method. Overall:
+ - I will extract formatting dates into another class 
+ - I will remove the printStatement method from the Statement class 
+ - After this is done the Statement class will only be responsible for generating statements
