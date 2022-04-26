@@ -46,5 +46,20 @@ describe(Statement, () => {
       
       expect(statement.activityLog[0].date).toEqual('10/04/2022')
     })
+
   })
+  describe('printStatement()', () => {
+    let statement;
+
+    beforeEach(() => {
+      // lets create a new instance of a BankAccount for each test
+      statement = new Statement();
+    })
+
+    it('should log the date any time logActivity is called', () => {
+      expect(statement.printStatement()).not.toThrowError
+    })
+
+  })
+
 });

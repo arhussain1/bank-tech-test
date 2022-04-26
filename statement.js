@@ -7,6 +7,10 @@ class Statement {
     this.activityLog.push({amount: amount, credit: credit, debit: debit, date: date})
   }
 
+  printStatement() {
+    
+  }
+
   // lets create some private methods
   #makeTwoDigits(num) {
     return num.toString().padStart(2, 0)
@@ -16,7 +20,7 @@ class Statement {
     const dd = this.#makeTwoDigits(date.getDate())
     const mm = this.#makeTwoDigits(date.getMonth())
     const yyyy = date.getFullYear()
-    
+
     const dateString = `${dd}/${mm}/${yyyy}`
     return dateString
   }
