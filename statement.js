@@ -11,8 +11,11 @@ class Statement {
     let array = ['date || credit || debit || balance']
 
     this.activityLog.forEach(transaction => {
+      const balance = this.#formatMoney(transaction.balance)
+      const credit = this.#formatMoney(transaction.credit)
+      const debit = this.#formatMoney(transaction.debit)
 
-      const string = `${transaction.date} || 1000.00 || ${transaction.debit}|| 1000.00`
+      const string = `${transaction.date} || ${credit} || ${debit}|| ${balance}`
       array.push(string);
     })
 
@@ -20,7 +23,7 @@ class Statement {
     return (array.join('\n'))
   }
 
-  // lets create some private methods
+  // private methods
   #makeTwoDigits(num) {
     return num.toString().padStart(2, 0)
   }
@@ -32,6 +35,14 @@ class Statement {
 
     const dateString = `${dd}/${mm}/${yyyy}`
     return dateString
+  }
+
+  #formatMoney(num) {
+    if (typeof num == "number") {
+      return num.toFixed(2)
+    } else {
+      return num
+    }
   }
 }
 

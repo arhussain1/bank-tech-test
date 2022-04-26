@@ -156,4 +156,9 @@ adding the date is a bit more complex as the Date class does not provide dates i
   '10/01/2023 || 1000.00 || || 1000.00'
   ```
 
+Added notes: 
+  - the logActivity method has been modified to accept a hash to reduce the number of arguments required
+  - the currency values need to be formatted to 2 decimal places
+  
+
 

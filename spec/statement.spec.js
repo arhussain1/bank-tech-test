@@ -20,8 +20,8 @@ describe(Statement, () => {
       const transaction = {balance: 200, credit: 200, debit: ' '}
       statement.logActivity(transaction);
 
-      expect(statement.activityLog[0].balance).toEqual(200)
-      expect(statement.activityLog[0].credit).toEqual(200)
+      expect(statement.activityLog[0].balance).toEqual(200.00)
+      expect(statement.activityLog[0].credit).toEqual(200.00)
       expect(statement.activityLog[0].debit).toEqual(' ')
     });
 
@@ -30,9 +30,9 @@ describe(Statement, () => {
 
       statement.logActivity(transaction);
 
-      expect(statement.activityLog[0].balance).toEqual(200)
+      expect(statement.activityLog[0].balance).toEqual(200.00)
       expect(statement.activityLog[0].credit).toEqual(' ')
-      expect(statement.activityLog[0].debit).toEqual(200)
+      expect(statement.activityLog[0].debit).toEqual(200.00)
     });  
 
     it('should log the date any time logActivity is called', () => {
