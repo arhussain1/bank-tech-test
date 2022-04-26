@@ -1,9 +1,9 @@
 const Statement = require('./statement')
 
 class BankAccount {
-  constructor(statement = new Statement) {
+  constructor() {
     this.balance = 0
-    this.statement = statement
+    this.statement = new Statement;
   }
 
   deposit(amount) {
@@ -16,7 +16,7 @@ class BankAccount {
     if (this.balance <= amount) throw('Not enough money, please add funds')
     this.balance -= amount 
 
-    const transactionInformation = {balance: this.balance, credit: '', debit: ''}
+    const transactionInformation = {balance: this.balance, credit: '', debit: amount}
     this.sendActivity(transactionInformation)
   }
 
