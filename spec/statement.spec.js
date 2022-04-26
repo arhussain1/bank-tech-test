@@ -56,8 +56,25 @@ describe(Statement, () => {
       statement = new Statement();
     })
 
-    it('should log the date any time logActivity is called', () => {
+    it('should not raise an error when printStatement is called', () => {
       expect(statement.printStatement()).not.toThrowError
+    })
+
+    it('should print the correct column headings', () => {
+      const amount = 1000;
+      const credit = 'credit';
+      const debit = '';
+      const date = '10/01/2022'
+
+      statement.logActivity(amount, credit, debit, date);
+
+      // lets mock the console log function so we can test if it receives the correct information such as date, credit, debit and balance
+      console.log = jest.fn();
+
+      statement.printStatement();
+      
+      // first time console log is called in this test
+      expect(console.log.mock.calls[0][0]).toEqual('date || credit || debit || balance')
     })
 
   })

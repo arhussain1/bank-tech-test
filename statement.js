@@ -8,7 +8,7 @@ class Statement {
   }
 
   printStatement() {
-    
+    console.log('date || credit || debit || balance')
   }
 
   // lets create some private methods
