@@ -1,4 +1,6 @@
 const BankAccount = require('../bankAccount')
+const Statement = require('../statement')
+jest.mock('../statement');
 
 describe('BankAccount', () => {
   describe('deposit()', () => {
@@ -68,15 +70,24 @@ describe('BankAccount', () => {
   })
 
   describe('sendActivity()', () => {
-    let bankAccount;
-
-    beforeEach(() => {
-      // lets create a new instance of a BankAccount for each test
-      bankAccount = new BankAccount();
-    })
-
     it('should be able to call sendActivity without raising an error', () => {
+      const bankAccount = new BankAccount();
+
       expect(bankAccount.sendActivity()).not.toThrow;
+    });
+
+    it('should pass amount of the transaction to a statement class instance', () => {
+      // we need to mock the log Activity method of the Statement class
+      const mockLogActivity = jest
+        .spyOn(Statement.prototype, 'logActivity')
+
+      const bankAccount = new BankAccount();
+
+      const amount = 200
+
+      bankAccount.sendActivity(amount);
+
+      expect(mockLogActivity).toHaveBeenCalledWith(amount)
     });
   })
 });

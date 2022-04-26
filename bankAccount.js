@@ -1,7 +1,9 @@
+const Statement = require('./statement')
 
 class BankAccount {
-  constructor() {
+  constructor(statement = new Statement) {
     this.balance = 0
+    this.statement = statement
   }
 
   deposit(amount) {
@@ -18,8 +20,8 @@ class BankAccount {
     return this.balance
   }
 
-  sendActivity() {
-
+  sendActivity(amount) {
+    this.statement.logActivity(amount)
   }
 }
 
