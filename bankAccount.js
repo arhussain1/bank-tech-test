@@ -9,7 +9,7 @@ class BankAccount {
   deposit(amount) {
     this.balance += amount
     const transactionInformation = {balance: this.balance, credit: amount, debit: ''}
-    this.sendActivity(transactionInformation)
+    this.#sendActivity(transactionInformation)
   }
 
   withdraw(amount) {
@@ -17,7 +17,7 @@ class BankAccount {
     this.balance -= amount 
 
     const transactionInformation = {balance: this.balance, credit: '', debit: amount}
-    this.sendActivity(transactionInformation)
+    this.#sendActivity(transactionInformation)
   }
 
   displayBalance() {
@@ -28,7 +28,7 @@ class BankAccount {
     this.statement.printStatement();
   }
 
-  sendActivity(transactionInformation) {
+  #sendActivity(transactionInformation) {
     this.statement.logActivity(transactionInformation)
   }
 }

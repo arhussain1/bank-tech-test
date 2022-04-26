@@ -27,18 +27,95 @@ date || credit || debit || balance
 10/01/2023 || 1000.00 || || 1000.00
 ```
 
+
 ### How to install this software?
-**Fill this section out with what to clone(this repo) and what to run to get the necessary dependencies(npm install or bundle install)**
+Step 1:
+  - Please clone this repo
+
+Step 2: 
+  - Install all required dependencies using the following command
+  ``npm install``
+
 
 ### How to run this software?
-**Fill this section out by telling the user how to use your application**
-- is it a command line tool (does it have an interface)
-- Or is it a software that needs to be run in irb (this is most likely our case)
-- Fill the rest out with how to use the different methods ideally show some code snippet examples of how to use the code.
+This software requires the use of the node REPL
+
+First ensure you have completed the steps in **How to install this software?** 
+
+#### Setting up node
+Begin by opening the node REPL by running the node command:
+  ``node``
+
+require the following file to load the software into the REPL
+  ``const BankAccount = require('./bankAccount.js')``
+
+#### Creating an account
+You can create your own bank account by creating an instance of the **BankAccount** class
+  ``const myBank = new BankAccount()``
+
+#### displayBalance()
+The ``displayBalance()`` method returns the total current balance of your account
+  ```
+  myBank.displayBalance()
+  // expected output: 0
+  ```
+
+#### deposit()
+The ``deposit()`` method is used to add money to your account
+  ```
+  // deposit 200 into the account
+  myBank.deposit(200)
+
+  myBank.displayBalance()
+  // expected output: 200
+  ```
+
+#### withdraw()
+The ``withdraw()`` method is used to remove money from your account
+  ```
+  // withdraw 150 from the account
+  myBank.withdraw(150)
+
+  myBank.displayBalance()
+  // expected output: 50
+  ```
+
+  **note**
+  you cannot withdraw an amount greater that the total balance of your account
+  ```
+  myBank.displayBalance()
+  // expected output: 200
+
+  myBank.withdraw(500)
+  // expected output: Error 'Not enough money, please add funds'
+  ```
+
+#### printStatement()
+The ``printStatement()`` method is used to print a summary of all transactions on the bank account
+  ```
+  myBank.displayBalance()
+  // expected output: 0
+
+  myBank.deposit(1000)
+  myBank.deposit(2000)
+  myBank.withdraw(500)
+
+  myBank.printStatement()
+  // expected output: 
+  // date || credit || debit || balance
+  // 26/03/2022 ||  || 500.00 || 2500.00
+  // 26/03/2022 || 2000.00 ||  || 3000.00
+  // 26/03/2022 || 1000.00 ||  || 1000.00
+  ```
+
 
 ### Running tests
-**Fill this section with a quick guide on how to run tests**
-- For example if your using ruby, navigate to the project directory and run RSpec
+Testing for this project is done using Jest
+
+To run tests, first ensure you have completed the steps in **How to install this software?** 
+
+Then navigate to the project directory and run the following command:
+  ``jest``
 
 
 ### My approach
@@ -176,5 +253,6 @@ Finally add print functionality to your BankAccount class which forwards to the 
   - Ensure you mock the dependency
 
 Final touch ups:
-  - we forgot about the order in which the transactions should appear most recent at the top, I have done it the wrong way round. To fix this I will add another test to expect a particular order
+  - I forgot about the order in which the transactions should appear most recent at the top, I have done it the wrong way round. To fix this I will add another test to expect a particular order
+  - We should also make the sendActivity method private as the user does not need access to it
 
