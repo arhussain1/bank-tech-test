@@ -10,7 +10,7 @@ class Statement {
   createStatement() {
     let array = ['date || credit || debit || balance']
 
-        this.activityLog.forEach(transaction => {
+    this.activityLog.forEach(transaction => {
       const balance = this.#formatMoney(transaction.balance)
       const credit = this.#formatMoney(transaction.credit)
       const debit = this.#formatMoney(transaction.debit)

@@ -66,4 +66,17 @@ describe('BankAccount', () => {
       expect(() => bankAccount.withdraw(600)).toThrow('Not enough money, please add funds')
     }); 
   })
+
+  describe('logActivity()', () => {
+    let bankAccount;
+
+    beforeEach(() => {
+      // lets create a new instance of a BankAccount for each test
+      bankAccount = new BankAccount();
+    })
+
+    it('should be able to call logActivity without raising an error', () => {
+      expect(bankAccount.logActivity()).not.toThrow;
+    });
+  })
 });

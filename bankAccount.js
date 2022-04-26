@@ -17,6 +17,10 @@ class BankAccount {
   displayBalance() {
     return this.balance
   }
+
+  logActivity() {
+    
+  }
 }
 
 module.exports = BankAccount;

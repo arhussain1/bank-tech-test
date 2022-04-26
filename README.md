@@ -164,4 +164,9 @@ Ok, so I currently have a functioning statement class that can receive activity 
 
 However, our printStatement class has too much responsibility, it's printing the statement to the console and also generating the statement aswell. Let extract generating the statement to a CreateStatement method
 
+#### Stage 6 - Update BankAccount class to forward commands onto the statement class
+Lets start with the deposit method:
+  - it should add the amount deposited to the total balance of the bank account
+  - it should call upon another method whose responsibility it is to logActivity(as this method will be used by withdraw aswell we should pass some arguments aswell)
+  - make sure to mock any external dependencies 
 
