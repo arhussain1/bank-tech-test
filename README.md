@@ -267,3 +267,13 @@ Maybe the statement class should not be printing itself, we already have a creat
  - I will extract formatting dates into another class 
  - I will remove the printStatement method from the Statement class 
  - After this is done the Statement class will only be responsible for generating statements
+
+Final notes:
+- I couldn't understand how to methods in JavaScript in the form object.methodName 
+- I was hoping to create methods like makeTwoDigits() so that I can apply it directly on to any number like this
+```
+const number = 1;
+number.makeTwoDigits();
+// expected output: "01"
+```
+- unfortunately I couldn't find any resources on how to do this
