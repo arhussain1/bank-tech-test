@@ -277,3 +277,18 @@ number.makeTwoDigits();
 // expected output: "01"
 ```
 - unfortunately I couldn't find any resources on how to do this
+
+### Post feedback changes
+After getting some feedback I am going to make the following changes in order:
+- Write a feature test that describes someone using the software and tests the interaction between classes are working well
+  - Mock the date class
+
+- change the naming to be consistent
+  - change formattedDate to formatDate in order to match formatMoney
+
+- move the logActivity method and the activityLog property to the BankAccount class as it should know everything about the BankAccount
+  - make sure to transfer over the tests
+  - make sure to isolate them from the Date class
+  
+- refactor createStatement, extract formatting the Statement into another method formatStatement
+  - maybe consider making the header variable a property of the class as that describes every statement object
