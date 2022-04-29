@@ -1,12 +1,12 @@
 class Statement {
   constructor() {
+    this.header = ['date || credit || debit || balance']
   }
 
   createStatement(activityLog) {
-    const header = ['date || credit || debit || balance']
     const body = this.#createStatementBody(activityLog)
 
-    const organisedArray = header.concat(body.reverse())
+    const organisedArray = this.header.concat(body.reverse())
     return organisedArray
   }
 
