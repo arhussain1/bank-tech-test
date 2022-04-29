@@ -5,9 +5,9 @@ describe('A user using this software', () => {
   it('should produce the correct statement after using the account', () => {
     const bankAccount = new BankAccount();
     // our tests will pass today but not tomorrow, lets mock Date to prevent that.
-    const mockGetDate = jest.spyOn(Date.prototype, 'getDate').mockImplementation(() => { return 15 })
-    const mockGetMonth = jest.spyOn(Date.prototype, 'getMonth').mockImplementation(() => { return 1 })
-    const mockGetFullYear = jest.spyOn(Date.prototype, 'getFullYear').mockImplementation(() => { return 2022 })
+    jest.spyOn(Date.prototype, 'getDate').mockImplementation(() => { return 15 })
+    jest.spyOn(Date.prototype, 'getMonth').mockImplementation(() => { return 1 })
+    jest.spyOn(Date.prototype, 'getFullYear').mockImplementation(() => { return 2022 })
 
     // lets deposit 2000
     bankAccount.deposit(2000);
